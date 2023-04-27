@@ -9,10 +9,10 @@ Shell (CLI)
 
 Let’s start with the basics, what is a CLI (a.k.a. shell)? Well, in order for your operating system to execute the programs you want it to, it first needs to go over several steps after you type in the commands in the command prompt:
 
-1.Read your input.
-2.Search a program that matches your input.
-3.Execute the program (or error message in case no program was found).
-4.Display the prompt so you can input another command.
+1. Read your input.
+2. Search a program that matches your input.
+3. Execute the program (or error message in case no program was found).
+4. Display the prompt so you can input another command.
 
 The CLI will do all of the above. The two most common are Bourne Shell (sh) and Bourne Again Shell (bash).
 
