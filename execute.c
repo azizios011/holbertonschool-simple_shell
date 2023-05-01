@@ -1,9 +1,9 @@
-#include"main.h"
+#include "main.h"
 /**
  * execute_cmd - execute commande
  * @args: argumment string
  * Return: Always 0.
-*/
+ */
 void execute_cmd(char **args)
 {
 	pid_t pid;
@@ -14,7 +14,7 @@ void execute_cmd(char **args)
 	if (pid == 0)
 	{
 		handle_redirection(args);
-		execv(args[0], args);
+		execve(args[0], args, NULL);
 
 		printf("Error executing command\n");
 		exit(EXIT_FAILURE);
@@ -26,6 +26,6 @@ void execute_cmd(char **args)
 	}
 	else
 	{
-	waitpid(pid, &status, 0);
+		waitpid(pid, &status, 0);
 	}
 }
