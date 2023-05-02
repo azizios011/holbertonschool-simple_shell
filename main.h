@@ -27,5 +27,4 @@ void free_line(char **lines);
 void exit_builtin(char **args);
 void env_builtin(char **args);
 int cd_builtin(char **args);
-
 #endif
