@@ -40,14 +40,14 @@ void env_builtin(char **args)
  * @args: argument string
  *
  * Return: Always 0.
- */
+ *
 int cd_builtin(char **args)
 {
 	char *new_dir;
 
 	if (args[1] == NULL)
 	{
-		new_dir = getenv("HOME");
+		new_dir = getenv("/");
 		if (new_dir == NULL)
 		{
 			perror("cd");
@@ -66,4 +66,18 @@ int cd_builtin(char **args)
 	}
 
 	return 0;
+}*/
+void cd_builtin(char **args)
+{
+	if (args[1] == NULL)
+	{
+		fprintf(stderr, "shell: cd: missing argument\n");
+	}
+	else
+	{
+		if (chdir(args[1]) != 0)
+		{
+			perror("shell: cd");
+		}
+	}
 }
