@@ -3,28 +3,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <unistd.h>
 #include <string.h>
+#include <unistd.h>
 #include <sys/wait.h>
-#include <fcntl.h>
-#include <sys/stat.h>
 
-#define MAX_CMD_LENGTH 1024
-#define MAX_ARGS 64
-#define MAX_PATHS 64
-#define MAX_PATH_LENGTH 1024
-#define NUM_PATHS MAX_PATHS
+#define BUFFER_SIZE 1024
 
-char *get_cmd_path(char *cmd_name, char **paths);
-extern char **environ;
-
-void loop(void);
-char *get_cmd_path(char *cmd_name, char **paths);
-void execute_cmd(char **args);
-int parse_cmd_line(char *line, char **args);
-char *read_cmd_line(void);
-void exit_builtin(char **args);
-void env_builtin(char **args);
-void handle_redirection(char **args);
-
+int loop(void);
+char *read_line(void);
+char **split_line(char *line);
+int execute(char **args);
 #endif
