@@ -1,43 +1,26 @@
-#include"main.h"
+#include "main.h"
 /**
- * split_line - tokenizes the input line into individual arguments.
- * @line: input line
- * Return: number of arguments
+ * parse_cmd_line - tokenizes the input line into individual arguments.
+ * @line: line
+ * @args: argumment vector
+ * Return: a pointer to the line.
  */
-char **split_line(char *line)
+char **parse_cmd_line(char *line, char *args)
 {
-	int bufsize = BUFFER_SIZE, position = 0;
-	char **tokens = malloc(bufsize * sizeof(char *));
-	char *token;
+	char *ptr = NULL;
+	char **cmd = NULL;
+	size_t i = 0;
 
-	if (!tokens)
+	ptr = strtok(line, args);
+
+	while (ptr)
 	{
-		fprintf(stderr, "Allocation error\n");
-		exit(EXIT_FAILURE);
+		cmd = realloc(cmd, ((i + 1) * sizeof(char *)));
+		cmd[i] = strdup(ptr);
+		ptr = strtok(NULL, args);
+		++i;
 	}
-
-	token = strtok(line, " \t\r\n\a");
-
-	while (token != NULL)
-	{
-		tokens[position] = token;
-		position++;
-
-		if (position >= bufsize)
-		{
-			bufsize += BUFFER_SIZE;
-			tokens = realloc(tokens, bufsize * sizeof(char *));
-
-			if (!tokens)
-			{
-				fprintf(stderr, "Allocation error\n");
-				exit(EXIT_FAILURE);
-			}
-		}
-
-		token = strtok(NULL, " \t\r\n\a");
-	}
-
-	tokens[position] = NULL;
-	return (tokens);
+	cmd = realloc(cmd, ((i + 1) * sizeof(char *)));
+	cmd[i] = NULL;
+	return (cmd);
 }

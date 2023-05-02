@@ -1,42 +1,27 @@
-#include"main.h"
+#include "main.h"
 /**
- * execute - executes a command with optional I/O redirection
- * @args: argument vector
+ * execute_cmd - execute commande
+ * @args: argumment string
  * Return: Always 0.
  */
-int execute(char **args)
+void execute_cmd(char **args)
 {
-	pid_t pid;
-	int status;
-
-	if (args[0] == NULL)
-	{
-		return (1);
-	}
+	pid_t pid = 0;
+	int status = 0;
 
 	pid = fork();
+	if (pid == -1)
+		perror("fork");
 
-	if (pid == 0)
+	else if (pid > 0)
 	{
-		char *envp[] = { NULL };
-
-		if (execve(args[0], args, envp) == -1)
-		{
-			perror("hsh");
-		}
-
-		exit(EXIT_FAILURE);
-	}
-	else if (pid < 0)
-	{
-		perror("hsh");
+		waitpid(pid, &status, 0);
+		kill(pid, SIGTERM);
 	}
 	else
 	{
-		do {
-			waitpid(pid, &status, WUNTRACED);
-		} while (!WIFEXITED(status) && !WIFSIGNALED(status));
+		if (execve(args[0], args, NULL) == -1)
+			perror("shell");
+		exit(EXIT_FAILURE);
 	}
-
-	return (1);
 }

@@ -1,48 +1,32 @@
 #include"main.h"
 /**
- * read_line - reads a line of input from stdin.
+ * read_cmd_line - reads a line of input from stdin.
  *
  * Return: line.
 */
-char *read_line(void)
+char *read_cmd_line(void)
 {
-	int bufsize = BUFFER_SIZE;
-	int position = 0;
-	char *buffer = malloc(sizeof(char) * bufsize);
-	int c;
+	char *line = NULL;
+	size_t size = 0;
+	ssize_t length = getline(&line, &size, stdin);
 
-	if (!buffer)
+	if (length == -1)
 	{
-		fprintf(stderr, "Allocation error\n");
-		exit(EXIT_FAILURE);
-	}
-
-	while (1)
-	{
-		c = getchar();
-
-		if (c == EOF || c == '\n')
+		if (feof(stdin))
 		{
-			buffer[position] = '\0';
-			return (buffer);
+			exit(0);
 		}
 		else
 		{
-			buffer[position] = c;
-		}
-
-		position++;
-
-		if (position >= bufsize)
-		{
-			bufsize += BUFFER_SIZE;
-			buffer = realloc(buffer, sizeof(char) * bufsize);
-
-			if (!buffer)
-			{
-				fprintf(stderr, "Allocation error\n");
-				exit(EXIT_FAILURE);
-			}
+			printf("Error: could not read command.\n");
+			exit(1);
 		}
 	}
+
+	if (line[length - 1] == '\n')
+	{
+		line[length - 1] = '\0';
+	}
+
+	return (line);
 }
