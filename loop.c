@@ -25,6 +25,7 @@ void loop(void)
 		{
 			cd_builtin(cmd_path);
 			free_line(cmd_path);
+			continue;
 		}
 		else if (strcmp(cmd_path[0], "env") == 0)
 		{
@@ -40,5 +41,6 @@ void loop(void)
 			execute_cmd(cmd_path);
 		free_line(cmd_path);
 	}
-	free_line(cmd_path);
+	free(line);
+	exit(EXIT_SUCCESS);
 }
