@@ -16,7 +16,7 @@ void get_cmd_path(char **paths)
 	{
 
 		path_split = parse_cmd_line(path, ":");
-		free(path);
+		free_line(path);
 		path = NULL;
 
 		for (i = 0; path_split[i]; i++)
@@ -34,13 +34,13 @@ void get_cmd_path(char **paths)
 			free(bin);
 			bin = NULL;
 		}
-		free(path_split);
-		free(paths[0]);
+		free_line(path_split);
+		free_line(paths[0]);
 		paths[0] = bin;
 	}
 	else
 	{
-		free(path);
+		free_line(path);
 		path = NULL;
 	}
 }
