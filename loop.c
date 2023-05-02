@@ -21,6 +21,11 @@ void loop(void)
 			free(cmd_path);
 			exit(0);
 		}
+		if (strcmp(cmd_path[0], "cd") == 0)
+		{
+			free(cmd_path);
+			exit(0);
+		}
 		else if (strcmp(cmd_path[0], "env") == 0)
 		{
 			free(cmd_path);
