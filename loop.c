@@ -18,18 +18,18 @@ void loop(void)
 
 		if (strcmp(cmd_path[0], "exit") == 0)
 		{
-			free(cmd_path);
+			free_line(cmd_path);
 			exit(0);
 		}
 		if (strcmp(cmd_path[0], "cd") == 0)
 		{
-			free(cmd_path);
-			exit(0);
+			free_line(cmd_path);
+			cd_builtin();
 		}
 		else if (strcmp(cmd_path[0], "env") == 0)
 		{
-			free(cmd_path);
-			print_env();
+			free_line(cmd_path);
+			print_env(cmd_path);
 			continue;
 		}
 		if (stat(cmd_path[0], &status) != 0)
@@ -38,7 +38,7 @@ void loop(void)
 			printf("Command not found\n");
 		else
 			execute_cmd(cmd_path);
-		free(cmd_path);
+		free_line(cmd_path);
 	}
-	free(line);
+	free_line(line);
 }
