@@ -34,7 +34,7 @@ void get_cmd_path(char **paths)
 			free(bin);
 			bin = NULL;
 		}
-		free(path_split);
+		free_line(path_split);
 		free(paths[0]);
 		paths[0] = bin;
 	}
