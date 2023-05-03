@@ -5,13 +5,13 @@
  */
 void print_env(void)
 {
-    size_t t;
-    int len;
+	size_t t;
+	int len;
 
-    for (t = 0; environ[t] != NULL; t++)
-    {
-        len = strlen(environ[t]);
-        write(1, environ[t], len);
-        write(STDOUT_FILENO, "\n", 1);
-    }
+	for (t = 0; environ[t] != NULL; t++)
+	{
+		len = strlen(environ[t]);
+		write(1, environ[t], len);
+		write(STDOUT_FILENO, "\n", 1);
+	}
 }

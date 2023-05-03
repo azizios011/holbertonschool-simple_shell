@@ -1,8 +1,7 @@
 #include "main.h"
 /**
  * get_cmd_path - get the full path of a command
- * @cmd_name: name of the command
- * @paths: array of directories in the PATH environment variable
+ * @paths : name of the command
  *
  */
 void get_cmd_path(char **paths)
@@ -14,7 +13,6 @@ void get_cmd_path(char **paths)
 
 	if (paths[0][0] != '/' && strncmp(paths[0], "./", 2) != 0)
 	{
-
 		path_split = parse_cmd_line(path, ":");
 		free(path);
 		path = NULL;

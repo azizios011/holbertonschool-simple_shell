@@ -42,5 +42,4 @@ void loop(void)
 		free_line(cmd_path);
 	}
 	free(line);
-	exit(EXIT_SUCCESS);
 }
