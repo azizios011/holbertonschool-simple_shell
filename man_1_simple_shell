@@ -1,16 +1,21 @@
 NAME
+
      simple_shell -- A simple command-line shell.
 
 SYNOPSIS
+
      simple_shell
 
 DESCRIPTION
+     
      The simple_shell is a basic command-line shell that provides users with a way to interact with their computer. It supports a limited set of commands and options.
 
 USAGE
+     
      To start the shell, simply type "simple_shell" at the command prompt. Once the shell has started, you can enter commands and view the output of those commands.
 
 COMMANDS
+
      The simple_shell supports the following commands:
      
      cd <directory>        Change the current working directory.
@@ -19,9 +24,11 @@ COMMANDS
      exit                  Exit the shell.
      
 OPTIONS
+
      The simple_shell does not support any options.
 
 EXAMPLES
+
      To change to the "/usr/local/bin" directory, type:
      
      cd /usr/local/bin
@@ -35,14 +42,14 @@ EXAMPLES
      exit
 
 FILES
+
      ~/.simple_shellrc   The shell's configuration file.
 
 SEE ALSO
+
      bash(1), tcsh(1)
 
 BUGS
+
      None known.
 
-AUTHOR
-     Your Name <your.email@example.com>
-     Your Name <your.email@example.com>
