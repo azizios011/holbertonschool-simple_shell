@@ -28,7 +28,5 @@ char *read_cmd_line(void)
 		line[length - 1] = '\0';
 	}
 
-	free(line);
-
 	return (line);
 }
