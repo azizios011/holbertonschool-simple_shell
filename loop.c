@@ -16,8 +16,15 @@ void loop(void)
 		line = read_cmd_line();
 		cmd_path = parse_cmd_line(line, " \t\r\n");
 
+		if (cmd_path[0] == NULL) {
+			free(line);
+			free_line(cmd_path);
+			continue;
+		}
+
 		if (strcmp(cmd_path[0], "exit") == 0)
 		{
+			free(line);
 			free_line(cmd_path);
 			exit(0);
 		}
@@ -40,6 +47,6 @@ void loop(void)
 		else
 			execute_cmd(cmd_path);
 		free_line(cmd_path);
+		free(line);
 	}
-	free(line);
 }
